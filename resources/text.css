@@ -1,0 +1,25 @@
+.text {
+  margin: 0;
+}
+
+.text_type-2 {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.35417em;
+}
+
+.text_type-3 {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.46429em;
+}
+
+.text_type-4 {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.46429em;
+}
+

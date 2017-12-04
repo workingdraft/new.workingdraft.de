@@ -1,0 +1,24 @@
+{
+  "name": "wd-new",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Hans Christian Reinl <info@drublic.de>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./index.js",
+    "styles": "node_modules/.bin/postcss --config .postcssrc.js --dir \"dist/\" \"resources/**/*.css\""
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.1",
+    "cssnano": "^3.10.0",
+    "express-handlebars": "^3.0.0",
+    "nodemon": "^1.12.1",
+    "postcss": "^6.0.14",
+    "postcss-cli": "^4.1.1",
+    "postcss-custom-properties": "^6.2.0",
+    "postcss-import": "^11.0.0"
+  }
+}

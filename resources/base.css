@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color--base: #102027;
+  --color--highlight: #8f098f;
+  --color--header: #e3ebf0;
+  --color--navigation: #90a0aa;
+  --color--border: #dde5eb;
+  --color--audio-background: #d0e0ea;
+  --color--button: #90a0aa;
+}
+
+body {
+  position: relative;
+  font-family: Roboto, sans-serif;
+  color: var(--color--base);
+  border-top: 0.5rem solid var(--color--highlight);
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20rem;
+  background: var(--color--header);
+}
+
+a,
+a:visited {
+  color: var(--color--highlight);
+}

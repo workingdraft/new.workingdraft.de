@@ -1,0 +1,69 @@
+.card {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow:
+    0 1px 5px 0 rgba(0, 0, 0, 0.2),
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.card--highlight {
+  border: 0.125rem solid var(--color--highlight);
+}
+
+.card_title {
+  padding-bottom: 1rem;
+}
+
+.card_audio {
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background: var(--color--audio-background);
+}
+
+.card_audio::before,
+.card_audio::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1rem;
+  height: 2rem;
+  width: 1rem;
+  background: inherit;
+}
+
+.card_audio::after {
+  left: auto;
+  right: -1rem;
+}
+
+.card_audio_element {
+  display: block;
+  width: 100%;
+}
+
+.card_audio_element::-webkit-media-controls-panel {
+  background: transparent;
+}
+
+.card_action {
+  position: relative;
+  margin-top: 1rem;
+  padding-top: 1rem
+}
+
+.card_action::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1rem;
+  right: -1rem;
+  border-top: 1px solid var(--color--border);
+}
+
+.card_info_item {
+  padding-right: 1rem;
+}
