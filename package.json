@@ -9,7 +9,8 @@
     "styles": "node_modules/.bin/postcss --config .postcssrc.js --dir \"dist/\" \"resources/**/*.css\""
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "wavesurfer.js": "2.0.0-beta01"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.1",

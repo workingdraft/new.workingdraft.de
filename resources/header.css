@@ -1,4 +1,7 @@
+@import url("variables.css");
+
 .header {
+
   float: left;
   padding: 2rem;
   padding-left: 3rem;

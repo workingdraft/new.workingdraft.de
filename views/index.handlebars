@@ -1,12 +1,11 @@
 <div class="card card--highlight">
   <h2 class="text text_type-2 card_title">
-     Spenden für Soundqualität!
+    Spenden für Soundqualität!
   </h2>
 
   <p class="text text_type-3">
     Unsere Aufnahmen werden optimiert mit
-    <a href="https://auphonic.com/donate_credits?user=Schepp">Auphonic</a>.
-    Flattern oder direkt bei
+    <a href="https://auphonic.com/donate_credits?user=Schepp">Auphonic</a>. Flattern oder direkt bei
     <a href="https://auphonic.com/donate_credits?user=Schepp">Auphonic spenden</a>.
   </p>
 
@@ -27,9 +26,35 @@
     <span class="text_type-4 card_info_item">1:01:44h</span>
   </p>
 
-  <div class="card_audio">
-    <audio controls preload="auto" class="card_audio_element">
-      <source src="http://workingdraft.de/wp-content/uploads/mp3/wd-320.mp3" type="audio/mpeg">
+  <div class="card_audio audio">
+    <div class="card_audio_element" data-audio-element="320" for=".card_audio--320">
+
+      <div class="audio_progress">
+        <button class="audio_play">
+          <i class="material-icons">play_arrow</i>
+          <i class="audio_play_pause material-icons">pause</i>
+        </button>
+
+        <div class="audio_progress_bar">
+          <div class="audio_progress_inner"></div>
+        </div>
+      </div>
+
+      <div class="audio_progress">
+        <button class="audio_play">
+          <i class="material-icons">volume_up</i>
+          <i class="material-icons">volume_mute</i>
+        </button>
+
+
+        <div class="audio_progress_bar">
+          <div class="audio_progress_inner"></div>
+        </div>
+      </div>
+    </div>
+
+    <audio controls preload="auto" class="card_audio--320">
+      <source src="/wd-320.mp3" type="audio/mpeg">
     </audio>
   </div>
 
@@ -42,3 +67,15 @@
     <button class="button">Zur den Shownotes</button>
   </div>
 </div>
+
+<script>
+  (function () {
+    const elements = document.querySelectorAll('[data-audio-element]')
+
+    Array.from(elements).map((element) => {
+      const forAttribute = element.getAttribute('for');
+      const sourceElement = document.querySelector(forAttribute);
+      const source = sourceElement.querySelector('[src]').getAttribute('src')
+    })
+  }())
+</script>
