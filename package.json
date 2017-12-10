@@ -5,21 +5,28 @@
   "author": "Hans Christian Reinl <info@drublic.de>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon ./index.js",
+    "start": "concurrently \"yarn server\" \"yarn styles --watch\" \"yarn js --watch\"",
+    "server": "nodemon ./index.js",
+    "js": "webpack",
     "styles": "node_modules/.bin/postcss --config .postcssrc.js --dir \"dist/\" \"resources/**/*.css\""
   },
   "dependencies": {
     "express": "^4.16.2",
-    "wavesurfer.js": "2.0.0-beta01"
+    "plyr": "^2.0.18"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "concurrently": "^3.5.1",
     "cssnano": "^3.10.0",
     "express-handlebars": "^3.0.0",
     "nodemon": "^1.12.1",
     "postcss": "^6.0.14",
     "postcss-cli": "^4.1.1",
     "postcss-custom-properties": "^6.2.0",
-    "postcss-import": "^11.0.0"
+    "postcss-import": "^11.0.0",
+    "webpack": "^3.10.0"
   }
 }
