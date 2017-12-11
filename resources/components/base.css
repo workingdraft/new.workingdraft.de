@@ -20,7 +20,7 @@ body::before {
   top: 0;
   left: 0;
   right: 0;
-  height: 20rem;
+  height: 21rem;
   background: var(--color--header);
 }
 

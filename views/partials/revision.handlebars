@@ -1,0 +1,71 @@
+<div class="card">
+
+  <a href="#" class="card_link">
+    {{#isLatest}}
+      <span class="cart_tag">Latest</span>
+    {{/isLatest}}
+
+    <h2 class="text text_type-2 card_title">
+      {{title}}
+    </h2>
+
+    <p class="text">
+      <span class="text_type-4 card_info_item">2. Dezember 2017</span>
+      <span class="text_type-4 card_info_item">Keine Kommentare</span>
+      <span class="text_type-4 card_info_item">1:01:44h</span>
+    </p>
+  </a>
+
+  <div class="card_audio audio" data-audio="320" for=".card_audio--320">
+    <div class="audio_progress audio_sound">
+      <button class="audio_button">
+        <i class="audio_button_icon material-icons">play_arrow</i>
+        <i class="audio_button_icon audio_button_icon--in-active material-icons">pause</i>
+      </button>
+
+      <div class="audio_progress_bar">
+        <div class="audio_progress_preloaded"></div>
+        <div class="audio_progress_inner"></div>
+
+        <div class="text_type-5 audio_duration">
+          0:31:20 / 1:01:44h
+        </div>
+      </div>
+    </div>
+
+    <div class="audio_progress audio_volume">
+      <button class="audio_button">
+        <i class="audio_button_icon material-icons">volume_up</i>
+        <i class="audio_button_icon audio_button_icon--in-active material-icons">volume_mute</i>
+      </button>
+
+      <div class="audio_progress_bar">
+        <div class="audio_progress_inner"></div>
+      </div>
+    </div>
+
+    <div class="audio_speed">
+      <label for="" class="text_type-5 audio_label">Speed</label>
+      <select class="audio_select">
+        <option>1x</option>
+        <option>1.2x</option>
+        <option>1.5x</option>
+        <option>2x</option>
+      </select>
+    </div>
+
+    <audio preload="auto" class="card_audio--320">
+      <source src="/wd-320.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <a href="#" class="card_link">
+    <p class="text text_type-3">
+      {{description}}
+    </p>
+
+    <div class="card_action">
+      <button class="button">Zu den Shownotes</button>
+    </div>
+  </a>
+</div>

@@ -15,8 +15,27 @@
   border: 0.125rem solid var(--color--highlight);
 }
 
+.card--flex {
+  display: flex;
+  align-items: center;
+}
+
+.card_link {
+  display: block;
+  text-decoration: none;
+}
+
 .card_title {
   padding-bottom: 1rem;
+}
+
+.cart_tag {
+  float: right;
+  background: var(--color--accent);
+  padding: 0.5em 0.75em;
+  color: #fff;
+  font-size: 0.875rem;
+  border-radius: 2em;
 }
 
 .card_audio {

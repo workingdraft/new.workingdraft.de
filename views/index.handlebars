@@ -10,73 +10,63 @@
   </p>
 
   <div class="card_action">
-    <button class="button">Jetzt spenden</button>
+    <button class="button button--primary">Jetzt spenden</button>
   </div>
 </div>
 
-
-<div class="card">
-  <h2 class="text text_type-2 card_title">
-    Revision 320: API- und Load-Testing in der Cloud
-  </h2>
-
-  <p class="text">
-    <span class="text_type-4 card_info_item">2. Dezember 2017</span>
-    <span class="text_type-4 card_info_item">Keine Kommentare</span>
-    <span class="text_type-4 card_info_item">1:01:44h</span>
+<div class="card card--flex">
+  <p class="text text_type-3">
+    Diese Webseite verwendet Cookies, um bestimmte Funktionen zu ermöglichen und das Angebot zu verbessern. Indem Sie hier fortfahren,
+    stimmen Sie der Nutzung von Cookies zu.
+    <a href="#">Mehr Informationen</a>.
   </p>
 
-  <div class="card_audio audio" data-audio="320" for=".card_audio--320">
-    <div class="audio_progress audio_sound">
-      <button class="audio_button">
-        <i class="audio_button_icon material-icons">play_arrow</i>
-        <i class="audio_button_icon audio_button_icon--in-active material-icons">pause</i>
-      </button>
-
-      <div class="audio_progress_bar">
-        <div class="audio_progress_preloaded"></div>
-        <div class="audio_progress_inner"></div>
-
-        <div class="audio_duration">
-          0:31:20 / 1:01:44h
-        </div>
-      </div>
-    </div>
-
-    <div class="audio_progress audio_volume">
-      <button class="audio_button">
-        <i class="audio_button_icon material-icons">volume_up</i>
-        <i class="audio_button_icon audio_button_icon--in-active material-icons">volume_mute</i>
-      </button>
-
-      <div class="audio_progress_bar">
-        <div class="audio_progress_inner"></div>
-      </div>
-    </div>
-
-    <div class="audio_speed">
-      <label for="" class="audio_label">Speed</label>
-      <select class="audio_select">
-        <option>1x</option>
-        <option>1.2x</option>
-        <option>1.5x</option>
-        <option>2x</option>
-      </select>
-    </div>
-
-    <audio preload="auto" class="card_audio--320">
-      <source src="/wd-320.mp3" type="audio/mpeg">
-    </audio>
+  <div>
+    <button class="button">Akzeptieren</button>
   </div>
+</div>
+
+{{> revision
+  title="Revision 322: Colloq"
+  description="Linz, München, Köln, Lissabon, Hongkong. Der wohl verteilteste Working Draft bis heute dreht sich um Dinge die entstehen,
+  wenn man gemeinsam an einem Ort ist. So haben Holger Bartel, Tobias Tom und unser hauseigener Anselm eines schönen Tages
+  in Düsseldorf beschlossen, die Event Plattform Colloq ins Leben zu rufen. Wir lauschen der Motivation und lernen aus den
+  Erfahrungen."
+  isLatest=true
+}}
+
+<div class="card card--highlight">
+  <h2 class="text text_type-2 card_title">
+    Sponsoren gesucht!
+  </h2>
 
   <p class="text text_type-3">
-    Dieses mal hatten wir Lars Wolff von Stormforger zu Gast. Stormforger ist ein API- und Load-Testing-Tool, das uns auffiel,
-    weil sich die Testszenarien per JavaScript beschreiben lassen. Darüber wollten wir mehr wissen…
+    Als Podcast versuchen wir die Qualität der Aufnahmen hoch zu halten. Dafür verwenden wir Tools, die nicht kostenlos sind.
+    Auch unser Aufnahme-Equipment kostet Geld. Mit rund 15.000 Downloads pro Folge im Schnitt haben wir Herausforderungen
+    im Hosting zu bewältigen, vor allem der Traffic ist recht hoch. Um diese Kosten decken zu können, suchen wir Sponsoren.
+    Wenn ihr unseren Podcast gut findest, sprecht mit euren Chefs. Bei Interesse, kontaktiert uns per E-Mail: sponsoring@workingdraft.de.
   </p>
 
   <div class="card_action">
-    <button class="button">Zu den Shownotes</button>
+    <button class="button button--primary">Jetzt spenden</button>
   </div>
 </div>
+
+{{> revision
+  title="Revision 322: Colloq"
+  description="Linz, München, Köln, Lissabon, Hongkong. Der wohl verteilteste Working Draft bis heute dreht sich um Dinge die entstehen,
+  wenn man gemeinsam an einem Ort ist. So haben Holger Bartel, Tobias Tom und unser hauseigener Anselm eines schönen Tages
+  in Düsseldorf beschlossen, die Event Plattform Colloq ins Leben zu rufen. Wir lauschen der Motivation und lernen aus den
+  Erfahrungen."
+  isLatest=false
+}}
+
+{{> revision
+  title="Revision 320: API- und Load-Testing in der Cloud"
+  description="Dieses mal hatten wir Lars Wolff von Stormforger zu Gast. Stormforger ist ein API- und Load-Testing-Tool, das uns auffiel,
+    weil sich die Testszenarien per JavaScript beschreiben lassen. Darüber wollten wir mehr wissen…"
+  isLatest=false
+}}
+
 
 <script src="/index.js"></script>
