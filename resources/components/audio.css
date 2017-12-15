@@ -54,7 +54,7 @@
 
 .audio_progress_inner {
   position: relative;
-  width: 50%;
+  width: 0;
   height: 0.5rem;
   background-color: var(--color--highlight);
   border-radius: 10px;
@@ -64,15 +64,14 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 90%;
+  width: 0;
   height: 0.5rem;
   border-radius: 10px;
   background-color: var(--color--base);
   opacity: 0.15;
 }
 
-.audio_progress_inner::after {
-  content: '';
+.audio_progress_button {
   position: absolute;
   top: 50%;
   right: 0;
@@ -83,9 +82,10 @@
   transform: translate(50%, -50%);
   box-shadow: 0 2px 1px rgba(100, 100, 100, 0.3);
   transition: 0.25s;
+  border: 0;
 }
 
-.audio_progress:hover .audio_progress_inner::after {
+.audio_progress:hover .audio_progress_button {
   width: 1.25rem;
   height: 1.25rem;
   cursor: pointer;
