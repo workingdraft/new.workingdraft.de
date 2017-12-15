@@ -1,19 +1,18 @@
 class Player {
 
   constructor(element) {
-    this.playing = false
-    this.sources = null
+    this.element = element
     this.audio = null
-    this.source = null
-    this.type = null
-
+    this.duration = 0
 
     this.handleMousedown = this.handleMousedown.bind(this)
     this.handleMousemove = this.handleMousemove.bind(this)
     this.handleMouseup = this.handleMouseup.bind(this)
-    this.handlePlay = this.handlePlay.bind(this)
-    this.handlePause = this.handlePause.bind(this)
+    this.togglePlay = this.togglePlay.bind(this)
+    this.toggleVolume = this.toggleVolume.bind(this)
+    this.handleProgress = this.handleProgress.bind(this)
 
+    this.setAudio(element)
 
     const progressElement = element.querySelector('[data-audio-progress]')
     const elementRect = progressElement.getBoundingClientRect(element)
@@ -29,14 +28,15 @@ class Player {
 
     this.progress.button.addEventListener('mousedown', this.handleMousedown)
 
-    element.addEventListener('play', this.handlePlay)
-    element.addEventListener('pause', this.handlePause)
-    element.addEventListener('ended', this.handlePause)
+    const playElement = element.querySelector('[data-audio-play]')
+    playElement.addEventListener('click', this.togglePlay)
 
-    this.setAudio(element)
-    this.setType()
-    this.setSources()
-    this.findSource()
+    this.time = {
+      stringElement: element.querySelector('[data-audio-time]')
+    }
+
+    const volumeElement = element.querySelector('[data-audio-volume]')
+    volumeElement.addEventListener('click', this.toggleVolume)
   }
 
   handleMousedown() {
@@ -58,30 +58,28 @@ class Player {
   }
 
   setAudio(element) {
-    const forAttribute = element.getAttribute('for');
-    const sourceElement = document.querySelector(forAttribute);
+    this.audio = element.querySelector('[data-audio-player]')
+    this.duration = this.audio.duration
 
-    this.audio = sourceElement
+    this.audio.addEventListener('timeupdate', this.handleProgress)
   }
 
-  setType() {
-    this.type = this.audio.canPlayType('audio/mpeg') ? 'mp3' :
-      this.audio.canPlayType('audio/ogg') ? 'ogg' : ''
+  handleProgress(event) {
+    const currentTime = Math.floor(this.audio.currentTime)
+    const percentage = this.getPercentage(currentTime / this.duration)
+
+    this.setTimeString(currentTime)
+    this.setWidth(this.progress.inner, percentage)
   }
 
-  setSources() {
-    const sourceElements = this.audio.querySelectorAll('[src]')
-    const sources = Array.from(sourceElements).map((element) => element.getAttribute('src'))
+  togglePlay() {
+    this.element.classList.toggle(`is-playing`)
 
-    this.sources = sources
-  }
-
-  handlePlay() {
-    this.playing = true
-  }
-
-  handlePause() {
-    this.playing = false
+    if (this.audio.paused) {
+      this.audio.play()
+    } else {
+      this.audio.pause()
+    }
   }
 
   getPercentage(percentage) {
@@ -96,26 +94,43 @@ class Player {
     return percentage
   }
 
+  toggleVolume() {
+    this.element.classList.toggle(`is-muted`)
+
+    if (this.audio.volume > 0) {
+      this.oldVolume = this.audio.volume
+      this.audio.volume = 0
+    } else {
+      this.audio.volume = this.oldVolume
+    }
+  }
+
   setVolume(volume) {
     this.audio.volume = volume / 100
   }
 
   setTime(timePercent) {
-    timePercent = this.audio.duration * (timePercent / 100)
+    const time = this.audio.duration * (timePercent / 100)
 
-    this.audio.currentTime = parseFloat(timePercent, 10).toFixed(2)
+    this.audio.currentTime = parseFloat(time, 10).toFixed(2)
+  }
+
+  getTimeFromSeconds(seconds) {
+    const time = []
+    seconds = parseInt(seconds, 10);
+    time[0] = `0${Math.floor(seconds / 3600)}`
+    time[1] = `0${Math.floor((seconds - (time[0] * 3600)) / 60)}`
+    time[2] = `0${seconds - (time[0] * 3600) - (time[1] * 60)}`
+
+    return time.map(t => t.substr(-2)).join(':')
+  }
+
+  setTimeString(time) {
+    this.time.stringElement.innerText = this.getTimeFromSeconds(time)
   }
 
   setWidth(element, width) {
     element.style.width = `${width}%`
-  }
-
-  findSource() {
-    this.source = this.sources.filter((source) => {
-      source = source.split('.')
-
-      return source[source.length - 1] === this.type
-    })[0]
   }
 }
 

@@ -16,11 +16,11 @@
     </p>
   </a>
 
-  <div class="card_audio audio" data-audio="320" for=".card_audio--320">
+  <div class="card_audio audio" data-audio>
     <div class="audio_progress audio_sound">
-      <button class="audio_button">
+      <button class="audio_button audio_button--play" data-audio-play>
         <i class="audio_button_icon material-icons">play_arrow</i>
-        <i class="audio_button_icon audio_button_icon--in-active material-icons">pause</i>
+        <i class="audio_button_icon audio_button_icon--inactive material-icons">pause</i>
       </button>
 
       <div class="audio_progress_bar" data-audio-progress>
@@ -30,15 +30,15 @@
         </div>
 
         <div class="text_type-5 audio_duration">
-          0:31:20 / 1:01:44h
+          <span data-audio-time>00:00:00</span> / 1:01:44h
         </div>
       </div>
     </div>
 
     <div class="audio_progress audio_volume">
-      <button class="audio_button">
+      <button class="audio_button audio_button--volume" data-audio-volume>
         <i class="audio_button_icon material-icons">volume_up</i>
-        <i class="audio_button_icon audio_button_icon--in-active material-icons">volume_mute</i>
+        <i class="audio_button_icon audio_button_icon--inactive material-icons">volume_mute</i>
       </button>
 
       <div class="audio_progress_bar">
@@ -56,7 +56,7 @@
       </select>
     </div>
 
-    <audio preload="auto" class="card_audio--320">
+    <audio preload="auto" class="card_audio--320" data-audio-player>
       <source src="/wd-320.mp3" type="audio/mpeg">
     </audio>
   </div>
