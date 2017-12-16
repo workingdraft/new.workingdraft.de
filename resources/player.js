@@ -1,5 +1,3 @@
-import PubSub from 'vanilla-pubsub'
-
 import Progress from './Progress'
 
 class Player {
@@ -11,15 +9,20 @@ class Player {
     this.togglePlay = this.togglePlay.bind(this)
     this.toggleVolume = this.toggleVolume.bind(this)
     this.handleProgress = this.handleProgress.bind(this)
-    this.updateProgress = this.updateProgress.bind(this)
+    this.setTime = this.setTime.bind(this)
+    this.setVolume = this.setVolume.bind(this)
 
     this.setAudio(element)
 
-    this.progress = new Progress(
-      element.querySelector('[data-audio-progress]')
-    )
+    this.progress = new Progress({
+      element: element.querySelector('[data-audio-progress]'),
+      handleProgress: this.setTime,
+    })
 
-    PubSub.subscribe('progress.update', this.updateProgress)
+    this.volume = new Progress({
+      element: element.querySelector('[data-audio-volume]'),
+      handleProgress: this.setVolume,
+    })
 
     const playElement = element.querySelector('[data-audio-play]')
     playElement.addEventListener('click', this.togglePlay)
@@ -28,7 +31,7 @@ class Player {
       stringElement: element.querySelector('[data-audio-time]')
     }
 
-    const volumeElement = element.querySelector('[data-audio-volume]')
+    const volumeElement = element.querySelector('[data-audio-mute]')
     volumeElement.addEventListener('click', this.toggleVolume)
   }
 
@@ -37,10 +40,6 @@ class Player {
     this.duration = this.audio.duration
 
     this.audio.addEventListener('timeupdate', this.handleProgress)
-  }
-
-  updateProgress(percentage) {
-    this.setTime(percentage)
   }
 
   handleProgress(event) {
@@ -70,6 +69,8 @@ class Player {
     } else {
       this.audio.volume = this.oldVolume
     }
+
+    this.volume.update(this.audio.volume * 100)
   }
 
   setVolume(volume) {

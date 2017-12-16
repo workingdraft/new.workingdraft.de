@@ -27,7 +27,6 @@
     "postcss-cli": "^4.1.1",
     "postcss-custom-properties": "^6.2.0",
     "postcss-import": "^11.0.0",
-    "vanilla-pubsub": "^1.1.2",
     "webpack": "^3.10.0"
   }
 }

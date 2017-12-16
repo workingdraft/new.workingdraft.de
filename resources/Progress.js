@@ -1,13 +1,14 @@
-import PubSub from 'vanilla-pubsub'
-
 class Progress {
-  constructor(element) {
-    const elementRect = element.getBoundingClientRect(element)
+  constructor(props) {
+    const { element } = props
+
+    const elementRect = element.getBoundingClientRect()
 
     this.handleMousedown = this.handleMousedown.bind(this)
     this.handleMousemove = this.handleMousemove.bind(this)
     this.handleMouseup = this.handleMouseup.bind(this)
 
+    this.props = props
     this.element = element
     this.inner = element.querySelector('[data-progress-inner]')
     this.preloader = element.querySelector('[data-progress-preloader]')
@@ -41,7 +42,9 @@ class Progress {
 
     this.setWidth(percentage)
 
-    PubSub.publish('progress.update', percentage)
+    if (typeof this.props.handleProgress === 'function') {
+      this.props.handleProgress(percentage)
+    }
   }
 
   /* private */handleMouseup() {
