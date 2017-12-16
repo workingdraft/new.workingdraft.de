@@ -1,32 +1,25 @@
-class Player {
+import PubSub from 'vanilla-pubsub'
 
+import Progress from './Progress'
+
+class Player {
   constructor(element) {
     this.element = element
     this.audio = null
     this.duration = 0
 
-    this.handleMousedown = this.handleMousedown.bind(this)
-    this.handleMousemove = this.handleMousemove.bind(this)
-    this.handleMouseup = this.handleMouseup.bind(this)
     this.togglePlay = this.togglePlay.bind(this)
     this.toggleVolume = this.toggleVolume.bind(this)
     this.handleProgress = this.handleProgress.bind(this)
+    this.updateProgress = this.updateProgress.bind(this)
 
     this.setAudio(element)
 
-    const progressElement = element.querySelector('[data-audio-progress]')
-    const elementRect = progressElement.getBoundingClientRect(element)
+    this.progress = new Progress(
+      element.querySelector('[data-audio-progress]')
+    )
 
-    this.progress = {
-      element: progressElement,
-      inner: element.querySelector('[data-audio-progress-inner]'),
-      preloader: element.querySelector('[data-audio-progress-preloader]'),
-      button: element.querySelector('[data-audio-progress-button]'),
-      width: elementRect.width,
-      offset: elementRect.left,
-    }
-
-    this.progress.button.addEventListener('mousedown', this.handleMousedown)
+    PubSub.subscribe('progress.update', this.updateProgress)
 
     const playElement = element.querySelector('[data-audio-play]')
     playElement.addEventListener('click', this.togglePlay)
@@ -39,24 +32,6 @@ class Player {
     volumeElement.addEventListener('click', this.toggleVolume)
   }
 
-  handleMousedown() {
-    document.addEventListener('mousemove', this.handleMousemove)
-    document.addEventListener('mouseup', this.handleMouseup)
-  }
-
-  handleMousemove(event) {
-    const left = event.clientX - this.progress.offset
-    const percentage = this.getPercentage(left / this.progress.width * 100)
-
-    this.setWidth(this.progress.inner, percentage)
-    this.setTime(percentage)
-  }
-
-  handleMouseup() {
-    document.removeEventListener('mousemove', this.handleMousemove)
-    document.removeEventListener('mouseup', this.handleMouseup)
-  }
-
   setAudio(element) {
     this.audio = element.querySelector('[data-audio-player]')
     this.duration = this.audio.duration
@@ -64,12 +39,16 @@ class Player {
     this.audio.addEventListener('timeupdate', this.handleProgress)
   }
 
+  updateProgress(percentage) {
+    this.setTime(percentage)
+  }
+
   handleProgress(event) {
     const currentTime = Math.floor(this.audio.currentTime)
-    const percentage = this.getPercentage(currentTime / this.duration)
 
     this.setTimeString(currentTime)
-    this.setWidth(this.progress.inner, percentage)
+
+    this.progress.update(currentTime / this.duration)
   }
 
   togglePlay() {
@@ -80,18 +59,6 @@ class Player {
     } else {
       this.audio.pause()
     }
-  }
-
-  getPercentage(percentage) {
-    if (percentage > 100) {
-      return 100
-    }
-
-    if (percentage < 0) {
-      return 0
-    }
-
-    return percentage
   }
 
   toggleVolume() {
@@ -127,10 +94,6 @@ class Player {
 
   setTimeString(time) {
     this.time.stringElement.innerText = this.getTimeFromSeconds(time)
-  }
-
-  setWidth(element, width) {
-    element.style.width = `${width}%`
   }
 }
 
