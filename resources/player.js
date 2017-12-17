@@ -9,6 +9,8 @@ class Player {
     this.togglePlay = this.togglePlay.bind(this)
     this.toggleVolume = this.toggleVolume.bind(this)
     this.handleProgress = this.handleProgress.bind(this)
+    this.handleMetadata = this.handleMetadata.bind(this)
+    this.handleVolumeChange = this.handleVolumeChange.bind(this)
     this.setTime = this.setTime.bind(this)
     this.setVolume = this.setVolume.bind(this)
 
@@ -37,17 +39,33 @@ class Player {
 
   setAudio(element) {
     this.audio = element.querySelector('[data-audio-player]')
-    this.duration = this.audio.duration
 
+    this.audio.addEventListener('loadedmetadata', this.handleMetadata)
     this.audio.addEventListener('timeupdate', this.handleProgress)
+    this.audio.addEventListener('volumechange', this.handleVolumeChange)
   }
 
-  handleProgress(event) {
+  handleMetadata() {
+    this.duration = this.audio.duration
+    this.volume.update(this.audio.volume * 100)
+  }
+
+  handleProgress() {
     const currentTime = Math.floor(this.audio.currentTime)
 
     this.setTimeString(currentTime)
 
     this.progress.update(currentTime / this.duration)
+  }
+
+  handleVolumeChange() {
+    if (this.audio.volume === 0) {
+      this.element.classList.add(`is-muted`)
+    } else {
+      this.element.classList.remove(`is-muted`)
+    }
+
+    this.volume.update(this.audio.volume * 100)
   }
 
   togglePlay() {
@@ -61,16 +79,12 @@ class Player {
   }
 
   toggleVolume() {
-    this.element.classList.toggle(`is-muted`)
-
     if (this.audio.volume > 0) {
       this.oldVolume = this.audio.volume
       this.audio.volume = 0
     } else {
       this.audio.volume = this.oldVolume
     }
-
-    this.volume.update(this.audio.volume * 100)
   }
 
   setVolume(volume) {
