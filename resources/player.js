@@ -27,17 +27,18 @@ class Player {
       handleProgress: this.setVolume,
     })
 
-    const playElement = element.querySelector('[data-audio-play]')
-    playElement.addEventListener('click', this.togglePlay)
+    element.querySelector('[data-audio-play]')
+      .addEventListener('click', this.togglePlay)
 
     this.time = {
       stringElement: element.querySelector('[data-audio-time]')
     }
 
-    const volumeElement = element.querySelector('[data-audio-mute]')
-    volumeElement.addEventListener('click', this.toggleVolume)
+    element.querySelector('[data-audio-mute]')
+      .addEventListener('click', this.toggleVolume)
 
-    element.querySelector('[data-audio-speed]').addEventListener('change', this.setPlaybackrate)
+    element.querySelector('[data-audio-speed]')
+      .addEventListener('change', this.setPlaybackrate)
   }
 
   setAudio(element) {
@@ -57,8 +58,6 @@ class Player {
     const currentTime = Math.floor(this.audio.currentTime)
 
     this.setTimeString(currentTime)
-
-    this.progress.update(currentTime / this.duration)
   }
 
   handleVolumeChange() {
