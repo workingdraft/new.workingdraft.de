@@ -40,8 +40,6 @@ class Progress {
     const left = event.clientX - this.offset
     const percentage = this.getPercentage(left / this.width * 100)
 
-    this.setWidth(percentage)
-
     if (typeof this.props.handleProgress === 'function') {
       this.props.handleProgress(percentage)
     }

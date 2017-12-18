@@ -58,6 +58,8 @@ class Player {
     const currentTime = Math.floor(this.audio.currentTime)
 
     this.setTimeString(currentTime)
+
+    this.progress.update(currentTime / this.duration * 100)
   }
 
   handleVolumeChange() {
