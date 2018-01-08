@@ -2960,10 +2960,6 @@ pkg-dir@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-plyr@^2.0.18:
-  version "2.0.18"
-  resolved "https://registry.yarnpkg.com/plyr/-/plyr-2.0.18.tgz#91ebb7ffe6a61f4517a8c88ed04036fe95101f4f"
-
 postcss-calc@^5.2.0:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/postcss-calc/-/postcss-calc-5.3.1.tgz#77bae7ca928ad85716e2fda42f261bf7c1d65b5e"
@@ -4115,6 +4111,10 @@ watchpack@^1.4.0:
     async "^2.1.2"
     chokidar "^1.7.0"
     graceful-fs "^4.1.2"
+
+wd-audio-player@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/wd-audio-player/-/wd-audio-player-1.0.0.tgz#58c6438d7d11b5bb08cd3c2e1cb794a42c38e5af"
 
 webpack-sources@^1.0.1:
   version "1.1.0"

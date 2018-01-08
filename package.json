@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "plyr": "^2.0.18"
+    "wd-audio-player": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.1",

@@ -1,4 +1,4 @@
-import Player from './Player'
+import Player from 'wd-audio-player'
 
 const elements = document.querySelectorAll('[data-audio]')
 
