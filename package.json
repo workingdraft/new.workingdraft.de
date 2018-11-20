@@ -5,10 +5,11 @@
   "author": "Hans Christian Reinl <info@drublic.de>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"yarn server\" \"yarn styles --watch\" \"yarn js --watch\"",
-    "server": "nodemon ./index.js",
+    "start": "concurrently \"yarn start:dev\" \"yarn styles --watch\" \"yarn js --watch\"",
+    "start:dev": "nodemon ./index.js",
     "js": "webpack",
-    "styles": "node_modules/.bin/postcss --config .postcssrc.js --dir \"dist/\" \"resources/**/*.css\""
+    "styles": "node_modules/.bin/postcss --config .postcssrc.js --dir \"dist/\" \"resources/**/*.css\"",
+    "copy": "cp -r ./resources dist/resources/"
   },
   "dependencies": {
     "express": "^4.16.2",

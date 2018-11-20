@@ -8,12 +8,12 @@
 }
 
 .content_inner {
-  margin-left: 7.5rem;
+  margin-left: 3.5rem;
+  margin-right: 3.5rem;
 }
 
 @media (min-width: 48em) {
   .content {
-    margin-top: 6rem;
     padding-left: 2rem;
     padding-right: 2rem;
   }
